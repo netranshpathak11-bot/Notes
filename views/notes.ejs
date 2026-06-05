@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Notes</title>
+</head>
+<body>
+    <h1>Notes</h1>
+    <div>
+        <ul> 
+        <% notes.forEach(note => { %>
+            <li class="note-item" id="note-<%= note.noteId %>">
+                <h3><%= note.title %></h3>
+                <p><%= note.content %></p>
+                <small><strong>ID:</strong> <%= note.noteId %> | <strong>Time:</strong> <%= note.time %></small>
+                <button onclick="deleteNote('<%= note.noteId %>')"><img src="/icons8-trash-48.png" alt="Delete" width="20" height="20"></button>
+            </li>
+        <% }); %>
+        </ul>
+    </div>
+    <script>
+        function deleteNote(noteId) {
+            if (confirm("Are you sure you want to delete this note?")) {
+                fetch(`/${noteId}`, {
+                    method: "DELETE"
+                })
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById(`note-${noteId}`).remove();
+                    } else {
+                        alert("Failed to delete the note.");
+                    }
+                })
+                .catch(err => console.error("Error:", err));
+            }
+        }
+    </script>
+    <% if (notes.length === 0) { %>
+        <p>No notes. <br><a href="/create">Create a new one</a></p>
+    <% } else { %>
+        <p><a href="/create">Create another note</a></p>
+    <% } %>
+</body>
+</html> 

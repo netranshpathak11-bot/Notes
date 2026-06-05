@@ -1,0 +1,11 @@
+body{
+    font-family:'Courier New', Courier, monospace;
+}
+#content{
+    margin-top: 15px;
+    padding-bottom: 50px;
+    padding-right: 50px;
+}
+#noteId{
+    margin-top: 15px;
+}
