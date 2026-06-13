@@ -19,8 +19,8 @@ app.get("/", (req, res) => {
 app.post("/", (req, res) => {
     const {title, content} = req.body;
     const noteId = Date.now().toString();
-    const time = new Date().toLocaleTimeString();
-    notes.push({title, content, noteId, time});
+    const date = new Date().toLocaleDateString();
+    notes.push({title, content, noteId, date});
     res.redirect("/");
 }); 
     

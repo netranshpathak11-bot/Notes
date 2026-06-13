@@ -14,7 +14,7 @@
             <li class="note-item" id="note-<%= note.noteId %>">
                 <h3><%= note.title %></h3>
                 <p><%= note.content %></p>
-                <small><strong>ID:</strong> <%= note.noteId %> | <strong>Time:</strong> <%= note.time %></small>
+                <small><strong>Created:</strong> <%= note.date %></small>
                 <button onclick="deleteNote('<%= note.noteId %>')"><img src="/icons8-trash-48.png" alt="Delete" width="20" height="20"></button>
             </li>
         <% }); %>
